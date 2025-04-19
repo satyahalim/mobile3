@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
         _isObscure
             ? Icons.remove_red_eye_outlined
             : Icons.visibility_off_outlined,
-        color: _isError ? Colors.red.shade800 : Colors.grey.shade600,
+        color: _isError ? Colors.pink.shade800 : Colors.pink.shade300,
       ),
     );
   }
@@ -53,6 +53,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Colors.pink[50],
       body: Center(
         child: SingleChildScrollView(
           padding: EdgeInsets.all(16),
@@ -61,20 +62,31 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               Text(
                 "Login",
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.pink[700],
+                ),
               ),
               SizedBox(height: 8),
               Text(
                 "Silakan login untuk melanjutkan.",
-                style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.pink[400],
+                ),
               ),
               SizedBox(height: 16),
               TextField(
                 controller: _username,
                 decoration: InputDecoration(
                   labelText: "Username",
-                  prefixIcon: Icon(Icons.person_outline),
-                  errorText: _isError ? ' ' : null, // hanya untuk merah
+                  labelStyle: TextStyle(color: Colors.pink),
+                  prefixIcon: Icon(Icons.person_outline, color: Colors.pink),
+                  errorText: _isError ? ' ' : null,
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.pink),
+                  ),
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -84,9 +96,13 @@ class _LoginPageState extends State<LoginPage> {
                 obscureText: _isObscure,
                 decoration: InputDecoration(
                   labelText: "Password",
-                  prefixIcon: Icon(Icons.lock_outline),
+                  labelStyle: TextStyle(color: Colors.pink),
+                  prefixIcon: Icon(Icons.lock_outline, color: Colors.pink),
                   suffixIcon: redEye(),
-                  errorText: _isError ? ' ' : null, // hanya untuk merah
+                  errorText: _isError ? ' ' : null,
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.pink),
+                  ),
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -96,7 +112,13 @@ class _LoginPageState extends State<LoginPage> {
                 height: 48,
                 child: ElevatedButton(
                   onPressed: login,
-                  child: Text("Login"),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.pink[400],
+                  ),
+                  child: Text(
+                    "Login",
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
             ],
